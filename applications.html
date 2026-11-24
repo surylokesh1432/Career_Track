@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>CareerTrack</title>
+    </head>
+    <body>
+        <header>
+            <h1><span>Career</span>Track</h1>
+            <nav>
+                <a href="index.html">Dashboard</a>
+                <a href="applications.html">Applications</a>
+                <a href="interviews.html">Interviews</a>
+                <a href="profile.html">Profile</a>
+                <a href="Lokesh.pdf" download>Resume</a>
+            </nav>
+        </header>
+        <br><br>
+        <main>
+            <section id="Application-form-container">
+            <form id="appform" action="/applications" method="post">
+                <fieldset>
+                    <legend>Application Form</legend>
+                    <label for="cname">Company Name</label>
+                    <input type="text" id="cname" name="cname" placeholder="Enter company Name"  required>
+                    <label for="title">Job Title</label>
+                    <input type="text" id="title" name="title" placeholder="Enter Job Title"  required>
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" placeholder="Enter company location" required>
+                    <label for="url">Job URL</label>
+                    <input type="url" id="url" name="url" placeholder="Enter job url" required >
+                    <label for="apdate">Applied Date</label>
+                    <input type="date" id="apdate" name="apdate" required>
+                    <label for="jobstatus">Job Status</label><br><br>
+                    <select id="jobstatus" name="jobstatus" required>
+                        <option value="">Select status</option>
+                        <option value="Applied">Applied</option>
+                        <option value="notapplied">Not Applied</option>
+                        <option value="interview">Interview</option>
+                        <option value="rejected">Rejected</option>
+                        <option value="offer">offer</option>
+                    </select>
+                    <label for="about">About your self:</label>
+                    <textarea id="about" name="about" placeholder="Details of job" minlength="10" maxlength="500"></textarea>
+                    <button type="submit" formaction="/save-draft" formmethod="get">Submit</button>
+                </fieldset>
+            </form></section><br><br>
+            <section id="application-table">
+                <table class="app-table"> >
+                    <caption>Application Table</caption>
+                    <thead><tr>
+                        <th scope="col">Company</th>
+                        <th scope="col">Job Title</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Applied Date</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Deloite</td>
+                            <td>Graduate Trinee</td>
+                            <td>Banglore</td>
+                            <td>Rejected</td>
+                            <td>23/3/2026</td>
+                        </tr>
+                        <tr>
+                            <td>Assenture</td>
+                            <td>Customer Support Engineer</td>
+                            <td>Pune</td>
+                            <td>Not Applied</td>
+                            <td>5/6/2026</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+        <footer>
+            <p>&copy; 2026 CareerTrack</p>
+        </footer>
+
+    </body>
+</html>

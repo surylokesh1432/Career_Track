@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>CareerTrack</title>
+    </head>
+    <body>
+         <header>
+            <h1><span>Career</span>Track</h1>
+            <nav>
+                <a href="index.html">Dashboard</a>
+                <a href="applications.html">Applications</a>
+                <a href="interviews.html">Interviews</a>
+                <a href="profile.html">Profile</a>
+                <a href="Lokesh.pdf" download>Resume</a>
+            </nav>
+        </header><br><br>
+        <main>
+            <section id="interview-form">
+                <form>
+                    <fieldset>
+                        <legend>Interview Tracker</legend>
+                        <label for="coname">Company Name</label>
+                    <input type="text" id="coname" name="coname" placeholder="Enter company Name"  required>
+                    <label for="title">Job Role</label>
+                    <input type="text" id="title" name="title" placeholder="Enter Job Role"  required>
+                    <label for="indate">Interview Date</label>
+                    <input type="date" id="indate" name="indate" required>
+                    <label for="intype">Interview Type</label>
+                    <select id="intype" name="intype" required>
+                        <option value="">Select interview type</option>
+                        <option value="Technical">Technical</option>
+                        <option value="HR">HR</option>
+                        <option value="managerial">Managerial</option>
+                        <option value="coding test">Coding Test</option>
+                        <option value="other">other</option>
+                    </select>
+                    <label for="preparation">Preparation Notes</label>
+                    <textarea id="preparation" name="preparation" placeholder="Enter preparation Details" minlength="10" maxlength="200" required></textarea>
+                    </fieldset>
+                    <button type="submit" formaction="/save-draft" formmethod="get">Submit</button>
+                </form>
+            </section>
+            <section id="interview-table">
+                <table class="interviews-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Company</th>
+                            <th scope="col">Job Role</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Interview Type</th>
+                            <th scope="col">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Deloitte</td>
+                            <td>Graduate Trainee</td>
+                            <td>20/08/2026</td>
+                            <td>Technical</td>
+                            <td>Completed</td>
+                        </tr>
+                        <tr>
+                            <td>Accenture</td>
+                            <td>Software Engineer</td>
+                            <td>02/09/2026</td>
+                            <td>HR</td>
+                            <td>Scheduled</td>
+                        </tr>
+                        <tr>
+                            <td>TCS</td>
+                            <td>Developer</td>
+                            <td>28/08/2026</td>
+                            <td>HR</td>
+                            <td>Scheduled</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+
+        <footer>
+            <p>&copy; 2026 CareerTrack</p>
+        </footer>
+        
+    </body>
+</html>

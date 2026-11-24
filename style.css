@@ -1,0 +1,965 @@
+
+/* =========================================
+   CAREERTRACK — GLOBAL THEME
+========================================= */
+
+:root {
+    --primary: #101426;
+    --background: #171c31;
+    --card: #202741;
+    --card-hover: #293250;
+
+    --text: #f4f5ff;
+    --muted: #b5bdd3;
+    --headings: #a99bff;
+    --accent: #8172f5;
+    --accent-hover: #988cff;
+    --success: #65d6a0;
+    --danger: #ff858f;
+
+    --border: 1px solid #39415d;
+    --border-radius: 12px;
+    --gap: 16px;
+    --shadow: 0 6px 20px rgb(0 0 0 / 20%);
+    --transition: 0.25s ease;
+}
+
+/* Reset and shared defaults */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 16px;
+    background: var(--primary);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    color: var(--headings);
+    overflow-wrap: anywhere;
+}
+
+h1,
+h2,
+h3,
+legend {
+    line-height: 1.3;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin-top: 0;
+}
+
+h2,
+h3 {
+    color: var(--headings);
+}
+
+::selection {
+    background: var(--accent);
+    color: white;
+}
+
+/* Keyboard accessibility */
+
+:focus-visible {
+    outline: 3px solid var(--accent-hover);
+    outline-offset: 3px;
+}
+
+/* =========================================
+   SHARED HEADER AND NAVIGATION
+========================================= */
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 28px;
+
+    min-height: 76px;
+    padding: 16px 22px;
+    margin-bottom: 28px;
+
+    background: var(--background);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -1px;
+}
+
+header h1 span {
+    color: var(--headings);
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+nav a {
+    display: inline-block;
+    padding: 9px 13px;
+
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.95rem;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    transition:
+        background var(--transition),
+        border-color var(--transition),
+        color var(--transition),
+        transform var(--transition);
+}
+
+nav a:hover {
+    color: white;
+    background: var(--card-hover);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* Shared main layout */
+
+main {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    height: auto;
+}
+
+main > section,
+.profile > section {
+    margin-bottom: 24px;
+}
+
+footer {
+    margin-top: 32px;
+    padding: 18px 10px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: var(--border);
+}
+
+/* =========================================
+   DASHBOARD — index.html
+========================================= */
+
+.welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    min-height: 190px;
+    padding: 28px;
+
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    text-align: left;
+}
+
+.welcome img {
+    flex: 0 0 auto;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+}
+
+.welcome-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.welcome-text h2 {
+    margin-bottom: 8px;
+}
+
+.welcome-text p {
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+.status {
+    margin-top: 24px;
+    padding: 20px;
+
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* Dashboard table */
+
+.status-table,
+.app-table,
+.interviews-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--background);
+    border: var(--border);
+    border-radius: 10px;
+}
+
+.status-table {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+caption {
+    padding: 16px;
+    color: var(--text);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.status-table th,
+.status-table td,
+.app-table th,
+.app-table td,
+.interviews-table th,
+.interviews-table td {
+    padding: 14px 16px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: var(--border);
+    overflow-wrap: anywhere;
+}
+
+.status-table th,
+.app-table th,
+.interviews-table th {
+    color: var(--headings);
+    background: #252b43;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.status-table td {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.status-table tbody tr:hover,
+.app-table tbody tr:hover,
+.interviews-table tbody tr:hover {
+    background: var(--card-hover);
+}
+
+.status-table tbody tr:last-child td,
+.app-table tbody tr:last-child td,
+.interviews-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* =========================================
+   APPLICATIONS — applications.html
+========================================= */
+
+/* Form card */
+
+#Application-form-container,
+#Application-form-+ {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 28px;
+    padding: 24px;
+
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+#Application-form-container form,
+#Application-form-+ form {
+    width: 100%;
+}
+
+/* Fieldset is the Grid container because it
+   directly contains the labels and controls. */
+
+#Application-form-container fieldset,
+#Application-form-+ fieldset,
+#interview-form fieldset {
+    display: grid;
+    grid-template-columns: minmax(130px, 0.75fr) minmax(0, 1.5fr);
+    align-items: center;
+    gap: 14px 18px;
+
+    min-width: 0;
+    margin: 0;
+    padding: 24px;
+
+    border: var(--border);
+    border-radius: 10px;
+}
+
+#Application-form-container legend,
+#Application-form-+ legend,
+#interview-form legend {
+    padding: 0 12px;
+    color: var(--headings);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+#Application-form-container label,
+#Application-form-+ label,
+#interview-form label {
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Shared form controls */
+
+#Application-form-container input,
+#Application-form-container select,
+#Application-form-container textarea,
+#Application-form-+ input,
+#Application-form-+ select,
+#Application-form-+ textarea,
+#interview-form input,
+#interview-form select,
+#interview-form textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+
+    color: var(--text);
+    background: var(--primary);
+    border: 1px solid #424b69;
+    border-radius: 8px;
+
+    font: inherit;
+    font-size: 0.95rem;
+
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        background var(--transition);
+}
+
+#Application-form-container input::placeholder,
+#Application-form-container textarea::placeholder,
+#Application-form-+ input::placeholder,
+#Application-form-+ textarea::placeholder,
+#interview-form input::placeholder,
+#interview-form textarea::placeholder {
+    color: #939db8;
+    opacity: 1;
+}
+
+#Application-form-container input:focus,
+#Application-form-container select:focus,
+#Application-form-container textarea:focus,
+#Application-form-+ input:focus,
+#Application-form-+ select:focus,
+#Application-form-+ textarea:focus,
+#interview-form input:focus,
+#interview-form select:focus,
+#interview-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgb(129 114 245 / 20%);
+}
+
+#Application-form-container textarea,
+#Application-form-+ textarea,
+#interview-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/* Full-width fields */
+
+#Application-form-container label[for="about"],
+#Application-form-+ label[for="about"],
+#Application-form-container textarea,
+#Application-form-+ textarea,
+#Application-form-container button,
+#Application-form-+ button,
+#interview-form label[for="notes"],
+#interview-form label[for="preparation"],
+#interview-form textarea,
+#interview-form button {
+    grid-column: 1 / -1;
+}
+
+#Application-form-container button,
+#Application-form-+ button,
+#interview-form button {
+    justify-self: end;
+}
+
+/* Buttons */
+
+#Application-form-container button,
+#Application-form-+ button,
+#interview-form button,
+.dow a {
+    display: inline-block;
+    padding: 12px 22px;
+
+    color: white;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+
+    font: inherit;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+        background var(--transition),
+        transform var(--transition),
+        box-shadow var(--transition);
+}
+
+#Application-form-container button:hover,
+#Application-form-+ button:hover,
+#interview-form button:hover,
+.dow a:hover {
+    background: var(--accent-hover);
+    box-shadow: 0 5px 16px rgb(129 114 245 / 25%);
+    transform: translateY(-2px);
+}
+
+#Application-form-container button:active,
+#Application-form-+ button:active,
+#interview-form button:active,
+.dow a:active {
+    transform: translateY(0);
+}
+
+/* Application table section */
+
+#application-table,
+#interview-table {
+    margin-bottom: 28px;
+    padding: 20px;
+
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* Allows wide tables to scroll on smaller screens */
+
+#application-table,
+#interview-table {
+    overflow-x: auto;
+}
+
+.app-table {
+    min-width: 650px;
+}
+
+.app-table th,
+.app-table td {
+    white-space: normal;
+}
+
+/* =========================================
+   INTERVIEWS — interviews.html
+========================================= */
+
+#interview-form {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 28px;
+    padding: 24px;
+
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.interviews-table {
+    min-width: 650px;
+}
+
+/* =========================================
+   PROFILE — profile.html
+========================================= */
+
+/* Profile introduction */
+
+.profile {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.fig {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+
+    padding: 26px;
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.fig figure {
+    flex: 0 0 auto;
+    margin: 0;
+}
+
+.fig img {
+    width: 160px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border: 3px solid var(--accent);
+    border-radius: 50%;
+}
+
+.about {
+    flex: 1;
+    min-width: 0;
+}
+
+.about h2 {
+    margin-bottom: 8px;
+}
+
+.about p {
+    color: var(--muted);
+}
+
+/* Skills */
+
+.skill {
+    padding: 22px;
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
+
+.skill ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.skill li {
+    padding: 8px 14px;
+    color: var(--headings);
+    background: var(--primary);
+    border: 1px solid #424b69;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+/* Learning progress cards */
+
+.progress-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+    gap: 16px;
+}
+
+.progress-card {
+    min-width: 0;
+    padding: 20px;
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.progress-card h3,
+.progress-card h4 {
+    margin-bottom: 12px;
+}
+
+.progress-card progress {
+    display: block;
+    width: 100%;
+    height: 12px;
+    margin: 12px 0;
+    accent-color: var(--accent);
+}
+
+.progress-card p {
+    margin-bottom: 0;
+    color: var(--muted);
+}
+
+/* Projects */
+
+.learn {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+    gap: 18px;
+}
+
+.project {
+    min-width: 0;
+    padding: 22px;
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition);
+}
+
+.project:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+}
+
+.project article {
+    overflow-wrap: anywhere;
+}
+
+.project h3 {
+    margin-bottom: 10px;
+}
+
+.project p {
+    color: var(--muted);
+}
+
+.project a {
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+/* Resume/download section */
+
+.dow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    padding: 24px;
+    background: var(--card);
+    border: var(--border);
+    border-radius: var(--border-radius);
+}
+
+.dow h2,
+.dow p {
+    margin-bottom: 0;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN — TABLETS
+========================================= */
+
+@media (max-width: 850px) {
+    body {
+        padding: 12px;
+    }
+
+    header {
+        gap: 14px;
+        padding: 16px;
+    }
+
+    nav {
+        gap: 5px;
+    }
+
+    nav a {
+        padding: 8px 10px;
+    }
+
+    .status,
+    #application-table,
+    #interview-table {
+        padding: 14px;
+    }
+
+    #Application-form-container,
+    #Application-form-+,
+    #interview-form {
+        padding: 18px;
+    }
+
+    #Application-form-container fieldset,
+    #Application-form-+ fieldset,
+    #interview-form fieldset {
+        padding: 20px;
+        gap: 12px;
+    }
+
+    .fig {
+        gap: 20px;
+    }
+
+    .fig img {
+        width: 130px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN — MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 8px;
+        line-height: 1.5;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        height: auto;
+        margin-bottom: 18px;
+        padding: 16px;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 1.65rem;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    nav a {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    main > section,
+    .profile > section {
+        margin-bottom: 16px;
+    }
+
+    .welcome {
+        flex-direction: column;
+        gap: 12px;
+        min-height: auto;
+        padding: 22px 16px;
+        text-align: center;
+    }
+
+    .welcome img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .welcome-text {
+        width: 100%;
+    }
+
+    .status {
+        padding: 10px;
+    }
+
+    /* Dashboard table stays readable by scrolling */
+
+    .status {
+        overflow-x: auto;
+    }
+
+    .status-table {
+        min-width: 450px;
+    }
+
+    .status-table th,
+    .status-table td,
+    .app-table th,
+    .app-table td,
+    .interviews-table th,
+    .interviews-table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+
+    caption {
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+
+    /* Forms become single-column */
+
+    #Application-form-container,
+    #Application-form-+,
+    #interview-form {
+        padding: 14px;
+    }
+
+    #Application-form-container fieldset,
+    #Application-form-+ fieldset,
+    #interview-form fieldset {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 8px;
+        padding: 16px 12px;
+    }
+
+    #Application-form-container legend,
+    #Application-form-+ legend,
+    #interview-form legend {
+        font-size: 1.2rem;
+    }
+
+    #Application-form-container label,
+    #Application-form-+ label,
+    #interview-form label {
+        margin-top: 6px;
+    }
+
+    #Application-form-container input,
+    #Application-form-container select,
+    #Application-form-container textarea,
+    #Application-form-+ input,
+    #Application-form-+ select,
+    #Application-form-+ textarea,
+    #interview-form input,
+    #interview-form select,
+    #interview-form textarea {
+        padding: 11px;
+    }
+
+    #Application-form-container button,
+    #Application-form-+ button,
+    #interview-form button {
+        justify-self: stretch;
+        width: 100%;
+        margin-top: 8px;
+    }
+
+    /* Remove the forced two-column spans on mobile */
+
+    #Application-form-container label[for="about"],
+    #Application-form-+ label[for="about"],
+    #Application-form-container textarea,
+    #Application-form-+ textarea,
+    #Application-form-container button,
+    #Application-form-+ button,
+    #interview-form label[for="notes"],
+    #interview-form label[for="preparation"],
+    #interview-form textarea,
+    #interview-form button {
+        grid-column: 1;
+    }
+
+    #application-table,
+    #interview-table {
+        padding: 10px;
+    }
+
+    .app-table,
+    .interviews-table {
+        min-width: 600px;
+    }
+
+    /* Profile stacks vertically */
+
+    .fig {
+        flex-direction: column;
+        padding: 20px 16px;
+        text-align: center;
+    }
+
+    .fig img {
+        width: 110px;
+    }
+
+    .skill {
+        padding: 18px;
+    }
+
+    .progress-grid,
+    .learn {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .progress-card,
+    .project {
+        padding: 18px;
+    }
+
+    .dow {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 18px;
+        text-align: center;
+    }
+
+    .dow a {
+        width: 100%;
+    }
+
+    footer {
+        margin-top: 20px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
